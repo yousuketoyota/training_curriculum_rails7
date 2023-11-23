@@ -8,14 +8,13 @@ class CalendarsController < ApplicationController
 
   # 予定の保存
   def create
-    Plan.create(plan_params)
+    Plan.create(plan_params)# １プライベートメソッド呼び出し
     redirect_to action: :index
   end
 
   private
-
   def plan_params
-    params.require(:calendars).permit(:date, :plan)
+    params.require(:plan).permit(:date, :plan)# ２特定のキーを受け取る
   end
 
   def getWeek
